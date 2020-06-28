@@ -1,0 +1,13 @@
+{% extends "veid/base.html" %}
+
+{% block title %}
+Create Page
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="/create/">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" , name="save">Create New</button>
+</form>
+{% endblock %}
