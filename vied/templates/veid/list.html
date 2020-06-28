@@ -5,14 +5,22 @@ Items
 {% endblock %}
 
 {% block content %}
-<ul>
-    <h1>{{ ls.name }}</h1>
-    {% for item in ls.item_set.all %}
-    {% if item.complete == False %}
-    <li>{{ item.text }} - incompleted</li>
-    {% else %}
-    <li>{{ item.text }} - completed</li>
-    {% endif %}
-    {% endfor %}
-</ul>
+<h1>{{ ls.name }}</h1>
+<form method="POST" action="#">
+    {% csrf_token %}
+    <ul>
+        {% for item in ls.item_set.all %}
+        {% if item.complete == False %}
+        <li><input type="checkbox" value="onclicked" name="c{{ item.id }}" checked>{{ item.text }}</li>
+        {% else %}
+        <li><input type="checkbox" value="onclicked" name="c{{ item.id }}">{{ item.text }}</li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <button type="submit" name="save" value="save">Save</button>
+    <input type="text" name="new">
+    <button type="submit" name="newItem" value="newItem">Add Item</button>
+</form>
+
+
 {% endblock %}
