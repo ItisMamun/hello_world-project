@@ -24,11 +24,11 @@ def index(response, id):
             else:
                 print("invalid")
 
-    return render(response, 'veid/list.html', {"ls": ls})
+    return render(response, 'vied/list.html', {"ls": ls})
 
 
 def home(response):
-    return render(response, "veid/home.html", {})
+    return render(response, "vied/home.html", {})
 
 
 def create(response):
@@ -41,4 +41,4 @@ def create(response):
         return HttpResponseRedirect("/%i" % t.id)
     else:
         form = CreateNewList()
-    return render(response, "veid/create.html", {"form": form})
+    return render(response, "vied/create.html", {"form": form})
